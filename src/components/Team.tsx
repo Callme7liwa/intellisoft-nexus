@@ -18,32 +18,11 @@ const team = [
     linkedin: "https://www.linkedin.com/in/ayoub-amazyan/"
   },
   {
-    name: "David Kim",
-    title: "Senior ML Engineer",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
-    bio: "Specialized in computer vision and NLP. Ph.D. in Machine Learning. Published researcher with 15+ patents in AI technologies.",
-    linkedin: "https://linkedin.com"
-  },
-  {
-    name: "Sofia Martinez",
-    title: "UX/UI Design Lead",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
-    bio: "Design thinking meets data-driven decisions. Creates intuitive experiences that users love and businesses measure success by.",
-    linkedin: "https://linkedin.com"
-  },
-  {
-    name: "James Chen",
-    title: "DevOps & Cloud Architect",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
-    bio: "Infrastructure expert building scalable, secure systems on AWS, Azure, and GCP. Kubernetes certified with experience managing platforms serving millions.",
-    linkedin: "https://linkedin.com"
-  },
-  {
-    name: "Emily Thompson",
-    title: "Head of Strategy",
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
-    bio: "Former management consultant turned technical strategist. Bridges the gap between business objectives and technical execution.",
-    linkedin: "https://linkedin.com"
+    name: 'Lakhder Amine',
+    title: 'Software Engineer & Data Scientist',
+    image: "/profiles/amine.jpg",
+    bio: "Experienced in building scalable web applications and data-driven solutions. Passionate about leveraging technology to solve real-world problems.",
+    linkedin: "https://www.linkedin.com/in/amine-lakhder-21a182192/"
   }
 ];
 
