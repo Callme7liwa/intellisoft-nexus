@@ -116,8 +116,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:hello@intellisoft.agency" className="text-muted-foreground hover:text-primary transition-smooth">
-                      hello@intellisoft.agency
+                    <a href="mailto:intellisoft.software@gmail.com" className="text-muted-foreground hover:text-primary transition-smooth">
+                      intellisoft.software@gmail.com
                     </a>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ const Contact = () => {
                   <div>
                     <p className="font-medium">Phone</p>
                     <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-smooth">
-                      +1 (234) 567-890
+                      +33 7 63 19 02 35
                     </a>
                   </div>
                 </div>
@@ -141,8 +141,8 @@ const Contact = () => {
                   <div>
                     <p className="font-medium">Location</p>
                     <p className="text-muted-foreground">
-                      San Francisco, CA<br />
-                      Remote & On-site Available
+                      Rennes, France<br />
+                      Remote  Available
                     </p>
                   </div>
                 </div>

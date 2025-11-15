@@ -4,16 +4,16 @@ import { Linkedin } from "lucide-react";
 
 const team = [
   {
-    name: "Alex Rivera",
-    title: "Founder & Lead AI Engineer",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-    bio: "10+ years building ML systems at scale. Former research scientist at leading AI labs. Passionate about making AI accessible and practical for businesses.",
-    linkedin: "https://linkedin.com"
+    name: "Seddiki Ayoub",
+    title: "Software Engineer & Data Scientist",
+    image: "/profiles/ayoub.jpg",
+    bio:   "Holding a dual degree in software engineering, and data science & Iot from TOP engineering schools.",
+    linkedin: "https://www.linkedin.com/in/seddiki--ayoub/"
   },
   {
     name: "Maya Patel",
     title: "Head of Engineering",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maya&backgroundColor=f4b6c3",
     bio: "Full-stack architect with expertise in building high-performance systems. Previously led engineering teams at Fortune 500 companies.",
     linkedin: "https://linkedin.com"
   },
