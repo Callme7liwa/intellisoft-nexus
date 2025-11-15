@@ -186,6 +186,29 @@ const Portfolio = () => {
       category: "mobile",
       featured: false
     },
+    {
+      id: 12,
+      title: "Tervela – AI-Powered Data Cleaning Assistant",
+      description: "Web app that lets users clean and explore CSV/Excel data through a conversational AI agent",
+      longDescription:
+        "Tervela is a web-based data assistant that allows non-technical and technical users to clean, transform, and explore CSV/Excel data simply by chatting with an AI agent. The React frontend provides a chat interface where users can upload a dataset and describe what they want in natural language (e.g., remove duplicates, filter rows, create new columns, fix missing values, group and aggregate). Behind the scenes, a Python backend powered by LangGraph converts these instructions into safe, executable Pandas code, applies the transformations step by step, and returns both the updated data preview and a clear explanation of what changed. The system keeps a history of actions, supports iterative refinements, and can generate basic visualizations so users can quickly understand the impact of their transformations. Tervela is designed as a practical GenAI data tool: instead of writing complex scripts, users talk to the agent and let it handle the cleaning logic while still keeping full control over their data.",
+      technologies: [
+        "React",
+        "TypeScript",
+        "FastAPI",
+        "Python",
+        "Pandas",
+        "LangGraph",
+        "LLM Integration",
+        "REST API"
+      ],
+      image: `/images/TervelA/image_1.png`,
+      images: Array.from({ length: 6 }, (_, i) => `/images/TervelA/image_${i + 1}.png`),
+      githubUrl: "",
+      liveUrl: "",
+      category: "website",
+      featured: false
+    }
   ];
 
   const filteredProjects = selectedCategory === "all" 
