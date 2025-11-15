@@ -11,11 +11,11 @@ const team = [
     linkedin: "https://www.linkedin.com/in/seddiki--ayoub/"
   },
   {
-    name: "Maya Patel",
-    title: "Head of Engineering",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maya&backgroundColor=f4b6c3",
-    bio: "Full-stack architect with expertise in building high-performance systems. Previously led engineering teams at Fortune 500 companies.",
-    linkedin: "https://linkedin.com"
+    name: "Ayoub Amazyan",
+    title: "Head of AI",
+    image: "/profiles/ayoub_amz.jpeg",
+    bio: "Head of AI and hands-on engineer focused on GenAI, AI agents, data pipelines and web scraping. I design and ship practical AI systems that automate real business workflows end-to-end.",
+    linkedin: "https://www.linkedin.com/in/ayoub-amazyan/"
   },
   {
     name: "David Kim",
