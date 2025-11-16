@@ -359,5 +359,29 @@
   "liveUrl": "",
   "category": "automation & integration",
   "featured": true
- }
+ },
+  {
+    "id": 17,
+    "title": "Intelligent Multi-Agent Web Scraper Framework",
+    "description": "AI-driven scraping engine using Playwright and agents to extract clean, structured data from complex websites",
+    "longDescription":
+      "This project is an intelligent web scraping framework that combines Playwright, heuristics and LLM-based agents to reliably extract structured data from complex, dynamic websites (e-commerce, automotive listings, content sites, etc.). The system uses a multi-step pipeline: a crawler collects candidate pages, an AI classifier detects which pages are product/search/detail pages, and selector detection modules automatically identify the right HTML patterns for titles, prices, images and metadata. A validation layer checks and refines these selectors, while a session store and storage layer handle cookies, login states and persistence. The whole flow is orchestrated as an agentic pipeline, where LLMs help with page understanding, selector ranking and error handling, making the scraper much more robust than traditional hard-coded scripts. The result is a reusable framework that can be adapted to new websites with minimal changes while still delivering clean, structured datasets ready for analytics or downstream AI models.",
+    "technologies": [
+      "Python",
+      "Playwright",
+      "LangGraph",
+      "LLM Integration",
+      "HTML Parsing",
+      "REST API",
+      "Data Extraction",
+      "Automation"
+    ],
+    "image": "/images/agent-scraper/image_1.png",
+    "imageCount": 1,
+    "imagePrefix": "/images/agent-scraper/image_",
+    "githubUrl": "",
+    "liveUrl": "",
+    "category": "ai & data",
+    "featured": false
+  }
 ]
