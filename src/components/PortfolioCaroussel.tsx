@@ -43,6 +43,7 @@ const PortfolioCarousel = ({projects}) => {
         <>
             <div className="relative group px-12">
                 <Swiper
+                    key={projects.map(p => p.id).join('-')}
                     modules={[Navigation, Pagination, Autoplay]}
                     navigation={{
                         prevEl: '.custom-prev',
