@@ -17,7 +17,7 @@ interface Project {
   githubUrl?: string;
   appStoreUrl?: string;
   playStoreUrl?: string;
-  category: "website" | "mobile";
+  category: "website" | "mobile" | "computer-vision";
   featured?: boolean;
 }
 
@@ -50,7 +50,7 @@ const techLogos: TechLogo[] = [
 
 
 const Portfolio = () => {
-  const [selectedCategory, setSelectedCategory] = useState<"all" | "website" | "mobile">("all");
+  const [selectedCategory, setSelectedCategory] = useState<"all" | "website" | "mobile" | "computer-vision">("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -207,6 +207,27 @@ const Portfolio = () => {
       githubUrl: "",
       liveUrl: "",
       category: "website",
+      featured: false
+    },
+    {
+      id: 2,
+      title: "AI-Powered Person Tracking & Identification in Video",
+      description: "End-to-end system to stabilize videos, track multiple people and recognize known faces in real time",
+      longDescription:
+        "This project is an end-to-end computer vision pipeline for tracking people in video and identifying known individuals. The system first stabilizes and enhances the input video frame by frame to reduce shaking and improve visual quality. Then, a YOLO-based detector is used to detect people in each frame, and DeepSORT is applied to assign consistent IDs over time, allowing each person to be tracked across the entire sequence. On top of that, a dedicated face analysis module runs on detected face regions to recognize known individuals and associate their identities with the corresponding tracks. The codebase is modular, with separate components for detection, tracking and face analytics, making it easy to extend or adapt to different cameras or environments. This solution is suitable for security monitoring, people flow analysis, event analytics or any use case where you need to know who appears in a video and how they move over time.",
+      technologies: [
+        "Python",
+        "OpenCV",
+        "YOLO",
+        "DeepSORT",
+        "Face Recognition / FaceAnalysis",
+        "NumPy"
+      ],
+      image: `/images/person-tracking/image_1.png`,
+      images: Array.from({ length: 2 }, (_, i) => `/images/person-tracking/image_${i + 1}.png`),
+      githubUrl: "",
+      liveUrl: "",
+      category: "computer-vision",
       featured: false
     }
   ];
