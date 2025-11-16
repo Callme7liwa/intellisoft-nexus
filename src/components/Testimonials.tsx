@@ -1,7 +1,11 @@
 import { Card } from "@/components/ui/card";
-import { Quote, Star, ExternalLink } from "lucide-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Quote, Star, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 interface Testimonial {
   name: string;
@@ -360,9 +364,6 @@ const testimonials: Testimonial[] = [
 ];
 
 const Testimonials = () => {
-  const [showAll, setShowAll] = useState(false);
-  const initialDisplayCount = 9;
-  const displayedTestimonials = showAll ? testimonials : testimonials.slice(0, initialDisplayCount);
   const getPlatformBadge = (platform?: string) => {
     switch (platform) {
       case "fiverr":
@@ -402,71 +403,92 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedTestimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="bg-card border-border p-8 hover-lift hover-glow relative"
-            >
-              {/* Platform Badge */}
-              {testimonial.platform !== "client" && (
-                <div className="absolute top-4 right-4">
-                  {getPlatformBadge(testimonial.platform)}
-                </div>
-              )}
+        <div className="relative group px-12">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation={{
+              prevEl: '.testimonial-prev',
+              nextEl: '.testimonial-next',
+            }}
+            pagination={{
+              clickable: true,
+              bulletClass: 'swiper-pagination-bullet !bg-gray-400',
+              bulletActiveClass: 'swiper-pagination-bullet-active !bg-primary',
+            }}
+            autoplay={{ delay: 4000, disableOnInteraction: false }}
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
+            }}
+            className="!pb-12"
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={index} className="h-auto">
+                <Card className="bg-card border-border p-4 hover-lift hover-glow relative flex flex-col h-80">
+                  {/* Platform Badge */}
+                  {testimonial.platform !== "client" && (
+                    <div className="absolute top-4 right-4 z-10">
+                      {getPlatformBadge(testimonial.platform)}
+                    </div>
+                  )}
 
-              <Quote className="text-primary mb-6" size={40} />
+                  <Quote className="text-primary mb-4 flex-shrink-0" size={28} />
 
-              {/* Rating Stars for Platform Reviews */}
-              {testimonial.platform !== "client" && renderStars(testimonial.rating)}
+                  {/* Rating Stars for Platform Reviews */}
+                  {testimonial.platform !== "client" && renderStars(testimonial.rating)}
 
-              <p className="text-xl font-semibold mb-4 text-primary">
-                "{testimonial.quote}"
-              </p>
+                  <p className="text-lg font-semibold mb-2 text-primary flex-shrink-0">
+                    "{testimonial.quote}"
+                  </p>
 
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {testimonial.testimonial}
-              </p>
+                  <div className="flex-1 overflow-hidden">
+                    <p className="text-sm text-muted-foreground leading-tight overflow-hidden" style={{
+                      display: '-webkit-box',
+                      WebkitLineClamp: 4,
+                      WebkitBoxOrient: 'vertical'
+                    }}>
+                      {testimonial.testimonial}
+                    </p>
+                  </div>
 
-              <div className="flex items-center gap-4 pt-4 border-t border-border">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-14 h-14 rounded-full object-cover"
-                />
-                <div className="flex-1">
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                </div>
+                  <div className="flex items-center gap-3 pt-2 border-t border-border flex-shrink-0 mt-auto">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-sm truncate">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground truncate">{testimonial.title}</p>
+                    </div>
 
-                {/* Review Link for Platform Reviews */}
-                {testimonial.reviewUrl && (
-                  <a
-                    href={testimonial.reviewUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                )}
-              </div>
-            </Card>
-          ))}
+                    {/* Review Link for Platform Reviews */}
+                    {testimonial.reviewUrl && (
+                      <a
+                        href={testimonial.reviewUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0"
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    )}
+                  </div>
+                </Card>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <button className="testimonial-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-primary dark:bg-gray-800 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 border border-gray-200 dark:border-gray-700">
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button className="testimonial-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-primary dark:bg-gray-800 shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 border border-gray-200 dark:border-gray-700">
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
-
-        {testimonials.length > initialDisplayCount && (
-          <div className="text-center mt-12">
-            <Button
-              onClick={() => setShowAll(!showAll)}
-              variant="outline"
-              size="lg"
-              className="px-8 py-3"
-            >
-              {showAll ? "Show Less" : `Load More Reviews (${testimonials.length - initialDisplayCount} remaining)`}
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );
