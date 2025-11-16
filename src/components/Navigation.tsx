@@ -30,8 +30,12 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <button onClick={() => scrollToSection("hero")} className="text-xl font-bold text-gradient">
-            IntelliSoft
+          <button onClick={() => scrollToSection("hero")} className="flex items-center">
+            <img 
+              src="/logo.png" 
+              alt="IntelliSoft Nexus" 
+              className="h-10 w-auto object-contain"
+            />
           </button>
 
           {/* Desktop Navigation */}
