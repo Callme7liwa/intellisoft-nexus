@@ -333,10 +333,31 @@
     ],
     "image": "/images/person-tracking/image_1.png",
     "imageCount": 2,
-    "imagePrefix": "/images/person-tracking/",
+    "imagePrefix": "/images/person-tracking/image_",
     "githubUrl": "",
     "liveUrl": "",
     "category": "ai & data",
     "featured": false
-  }
+  },
+
+  {
+  "id": 16,
+  "title": "Automated WhatsApp to Slack Business Bridge",
+  "description": "Enables seamless automation and facilitates team collaboration by bridging WhatsApp client messages directly into a unified Slack channel.",
+  "longDescription":
+    "This project is a complete integration bridge designed to automate communication between a WhatsApp business number and a Slack workspace. When a client sends a message, inquiry, or order to the designated WhatsApp number, the system instantly forwards it to a specific Slack channel. This allows the entire team to monitor incoming requests and collaborate on a response from a single, unified interface, facilitating faster teamwork. Team members can reply directly from Slack; the bridge automatically formats and sends the response back to the client's WhatsApp. The pipeline also intelligently handles media: if a message contains an image or document, it's uploaded to Google Drive, and the URL is posted to Slack, keeping the channel clean. This solution is ideal for streamlining customer support, managing sales orders directly, and enabling automation to ensure no client communication is ever missed.",
+  "technologies": [
+    "Slack API (Bolt.js)",
+    "WhatsApp Business API (e.g., Twilio)",
+    "Google Drive API",
+    "Webhooks"
+  ],
+  "image": "/images/whatsapp/whatsapp_1.png",
+  "imageCount": 3,
+  "imagePrefix": "/images/whatsapp/whatsapp_",
+  "githubUrl": "",
+  "liveUrl": "",
+  "category": "automation & integration",
+  "featured": true
+ }
 ]

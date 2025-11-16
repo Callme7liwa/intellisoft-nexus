@@ -160,7 +160,7 @@ const Contact = () => {
                 variant="secondary"
                 size="lg"
                 className="w-full"
-                onClick={() => window.open("https://calendly.com", "_blank")}
+                onClick={() => window.open("https://calendly.com/intellisoft-software", "")}
               >
                 <Calendar className="mr-2" size={20} />
                 Schedule Discovery Call

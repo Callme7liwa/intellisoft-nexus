@@ -20,7 +20,7 @@ interface Project {
     githubUrl?: string;
     appStoreUrl?: string;
     playStoreUrl?: string;
-    category: "website" | "mobile" | "ai & data";
+    category: "website" | "mobile" | "ai & data" | "automation & integration";
     featured?: boolean;
 }
 
@@ -85,6 +85,7 @@ const Portfolio = () => {
                         {key: "website", label: "Web Apps", icon: <Globe size={16}/>},
                         {key: "mobile", label: "Mobile Apps", icon: <Smartphone size={16}/>},
                         {key: "ai & data", label: "AI & Data", icon: <Stars size={16}/>},
+                        {key: "automation & integration", label: "Automation & Integration", icon: <Stars size={16}/>},
                     ].map((category) => (
                         <button
                             key={category.key}
