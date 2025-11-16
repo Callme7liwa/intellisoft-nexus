@@ -1,9 +1,4 @@
-import { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, ChevronLeft, ChevronRight, Smartphone, Globe, Download, Github } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+"use client";
 
 interface Project {
   id: number;
@@ -21,33 +16,22 @@ interface Project {
   featured?: boolean;
 }
 
-interface TechLogo {
-  name: string;
-  icon: string;
-  color: string;
+interface Project {
+    id: number;
+    title: string;
+    description: string;
+    longDescription: string;
+    technologies: string[];
+    image: string;
+    imageCount: number;
+    imagePrefix: string;
+    liveUrl?: string;
+    githubUrl?: string;
+    appStoreUrl?: string;
+    playStoreUrl?: string;
+    category: "website" | "mobile" | "ai & data";
+    featured?: boolean;
 }
-
-const techLogos: TechLogo[] = [
-    { name: "React", icon: "⚛️", color: "text-blue-500" },
-    { name: "React Native", icon: "📱", color: "text-blue-600" },
-    { name: "Vue.js", icon: "🟢", color: "text-green-500" },
-    { name: "Angular", icon: "🅰️", color: "text-red-500" },
-    { name: "Node.js", icon: "🟢", color: "text-green-600" },
-    { name: "Python", icon: "🐍", color: "text-yellow-500" },
-    { name: "TypeScript", icon: "🔷", color: "text-blue-600" },
-    { name: "JavaScript", icon: "🟡", color: "text-yellow-500" },
-    { name: "Swift", icon: "🍎", color: "text-orange-500" },
-    { name: "Kotlin", icon: "🤖", color: "text-purple-500" },
-    { name: "Flutter", icon: "🦋", color: "text-blue-400" },
-    { name: "Firebase", icon: "🔥", color: "text-orange-500" },
-    { name: "MongoDB", icon: "🍃", color: "text-green-600" },
-    { name: "PostgreSQL", icon: "🐘", color: "text-blue-700" },
-    { name: "Google Maps API", icon: "🗺️", color: "text-green-500" },
-    { name: "Cloudinary", icon: "☁️", color: "text-blue-500" },
-    { name: "Express.js", icon: "🚀", color: "text-gray-600" },
-];
-
-
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState<"all" | "website" | "mobile" | "computer-vision">("all");
@@ -252,367 +236,47 @@ const Portfolio = () => {
         prev === 0 ? selectedProject.images.length - 1 : prev - 1
       );
     }
-  };
 
-  const getTechLogo = (techName: string) => {
-    return techLogos.find(logo => logo.name === techName) || { name: techName, icon: "⚡", color: "text-primary" };
-  };
-
-  return (
-    <section id="portfolio" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="text-gradient">Work</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real projects. Real results. See how we've helped businesses transform through intelligent software.
-          </p>
-        </div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {[
-            { key: "all", label: "All Projects", icon: <Globe size={16} /> },
-            { key: "website", label: "Web Apps", icon: <Globe size={16} /> },
-            { key: "mobile", label: "Mobile Apps", icon: <Smartphone size={16} /> }
-          ].map((category) => (
-            <button
-              key={category.key}
-              onClick={() => setSelectedCategory(category.key as any)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
-                selectedCategory === category.key
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-card text-muted-foreground hover:bg-primary/10 hover:text-primary"
-              }`}
-            >
-              {category.icon}
-              {category.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Featured Projects */}
-        {selectedCategory === "all" && featuredProjects.length > 0 && (
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-center mb-8">
-              🌟 Featured Projects
-            </h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredProjects.map((project) => (
-                <Dialog key={project.id}>
-                  <DialogTrigger asChild>
-                    <Card 
-                      className="bg-card border-border overflow-hidden hover-lift hover-glow cursor-pointer group relative"
-                      onClick={() => {
-                        setSelectedProject(project);
-                        setCurrentImageIndex(0);
-                      }}
-                    >
-                      {/* Featured Badge */}
-                      <div className="absolute top-4 right-4 z-10 bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-medium">
-                        Featured
-                      </div>
-
-                      {/* Project Image */}
-                      <div className="aspect-video relative overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-smooth"
-                          onError={(e) => {
-                            const target = e.currentTarget;
-                            target.style.display = 'none';
-                            const fallback = target.nextElementSibling as HTMLElement;
-                            if (fallback) fallback.style.display = 'flex';
-                          }}
-                        />
-                        <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground" style={{display: 'none'}}>
-                          {project.category === "mobile" ? <Smartphone size={48} /> : <Globe size={48} />}
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60"></div>
-                      </div>
-
-                      {/* Project Info */}
-                      <div className="p-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          {project.category === "mobile" ? 
-                            <Smartphone size={16} className="text-primary" /> : 
-                            <Globe size={16} className="text-primary" />
-                          }
-                          <span className="text-xs font-medium text-primary uppercase tracking-wide">
-                            {project.category === "mobile" ? "Mobile App" : "Web Application"}
-                          </span>
-                        </div>
-                        
-                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-smooth">
-                          {project.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4 text-sm">
-                          {project.description}
-                        </p>
-
-                        {/* Technologies */}
-                        <div className="flex flex-wrap gap-2">
-                          {project.technologies.slice(0, 4).map((tech, index) => {
-                            const techLogo = getTechLogo(tech);
-                            return (
-                              <span
-                                key={index}
-                                className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full flex items-center gap-1"
-                              >
-                                <span>{techLogo.icon}</span>
-                                {tech}
-                              </span>
-                            );
-                          })}
-                          {project.technologies.length > 4 && (
-                            <span className="px-3 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-full">
-                              +{project.technologies.length - 4} more
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </Card>
-                  </DialogTrigger>
-                </Dialog>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* All Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.filter(p => selectedCategory !== "all" || !p.featured).map((project) => (
-            <Dialog key={project.id}>
-              <DialogTrigger asChild>
-                <Card 
-                  className="bg-card border-border overflow-hidden hover-lift hover-glow cursor-pointer group"
-                  onClick={() => {
-                    setSelectedProject(project);
-                    setCurrentImageIndex(0);
-                  }}
-                >
-                  {/* Project Image */}
-                  <div className="aspect-video relative overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-smooth"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        target.style.display = 'none';
-                        const fallback = target.nextElementSibling as HTMLElement;
-                        if (fallback) fallback.style.display = 'flex';
-                      }}
-                    />
-                    <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground" style={{display: 'none'}}>
-                      {project.category === "mobile" ? <Smartphone size={32} /> : <Globe size={32} />}
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60"></div>
-                  </div>
-
-                  {/* Project Info */}
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      {project.category === "mobile" ? 
-                        <Smartphone size={14} className="text-primary" /> : 
-                        <Globe size={14} className="text-primary" />
-                      }
-                      <span className="text-xs font-medium text-primary uppercase tracking-wide">
-                        {project.category === "mobile" ? "Mobile App" : "Web App"}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-smooth">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 text-sm">
-                      {project.description}
+    return (
+        <section id="portfolio" className="py-24 bg-muted/30">
+            <div className="container mx-auto px-6">
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                        Our <span className="text-gradient">Work</span>
+                    </h2>
+                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                        Real projects. Real results. See how we've helped businesses transform.
                     </p>
+                </div>
 
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-1">
-                      {project.technologies.slice(0, 3).map((tech, index) => {
-                        const techLogo = getTechLogo(tech);
-                        return (
-                          <span
-                            key={index}
-                            className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full flex items-center gap-1"
-                          >
-                            <span className="text-xs">{techLogo.icon}</span>
-                            {tech}
-                          </span>
-                        );
-                      })}
-                      {project.technologies.length > 3 && (
-                        <span className="px-2 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-full">
-                          +{project.technologies.length - 3}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              </DialogTrigger>
+                {/* Categories */}
+                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                    {[
+                        {key: "all", label: "All Projects", icon: <Globe size={16}/>},
+                        {key: "website", label: "Web Apps", icon: <Globe size={16}/>},
+                        {key: "mobile", label: "Mobile Apps", icon: <Smartphone size={16}/>},
+                        {key: "ai & data", label: "AI & Data", icon: <Stars size={16}/>},
+                    ].map((category) => (
+                        <button
+                            key={category.key}
+                            onClick={() => setSelectedCategory(category.key as any)}
+                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                                selectedCategory === category.key
+                                    ? "bg-primary text-primary-foreground shadow-lg"
+                                    : "bg-card text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                            }`}
+                        >
+                            {category.icon}
+                            {category.label}
+                        </button>
+                    ))}
+                </div>
 
-              {/* Project Modal */}
-              <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
-                {selectedProject?.id === project.id && (
-                  <div className="space-y-6">
-                    <DialogTitle className="sr-only">{selectedProject.title}</DialogTitle>
-                    
-                    {/* Image Gallery */}
-                    <div className="relative">
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden relative">
-                        <img 
-                          src={selectedProject.images[currentImageIndex]} 
-                          alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            const target = e.currentTarget;
-                            target.style.display = 'none';
-                            const fallback = target.nextElementSibling as HTMLElement;
-                            if (fallback) fallback.style.display = 'flex';
-                          }}
-                        />
-                        <div className="absolute inset-0 w-full h-full bg-muted flex items-center justify-center text-muted-foreground" style={{display: 'none'}}>
-                          {selectedProject.category === "mobile" ? 
-                            <Smartphone size={64} /> : 
-                            <Globe size={64} />
-                          }
-                        </div>
-                        
-                        <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded">
-                          Screenshot {currentImageIndex + 1}
-                        </div>
-                        
-                        {selectedProject.images.length > 1 && (
-                          <>
-                            <button
-                              onClick={prevImage}
-                              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-background/80 hover:bg-background rounded-full transition-smooth"
-                            >
-                              <ChevronLeft size={20} />
-                            </button>
-                            <button
-                              onClick={nextImage}
-                              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-background/80 hover:bg-background rounded-full transition-smooth"
-                            >
-                              <ChevronRight size={20} />
-                            </button>
-                          </>
-                        )}
-                      </div>
-
-                      {/* Image Indicators */}
-                      {selectedProject.images.length > 1 && (
-                        <div className="flex justify-center gap-2 mt-4">
-                          {selectedProject.images.map((_, index) => (
-                            <button
-                              key={index}
-                              onClick={() => setCurrentImageIndex(index)}
-                              className={`w-2 h-2 rounded-full transition-colors ${
-                                index === currentImageIndex ? "bg-primary" : "bg-muted"
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Project Details */}
-                    <div className="space-y-6">
-                      <div className="flex items-center gap-3">
-                        {selectedProject.category === "mobile" ? 
-                          <Smartphone size={24} className="text-primary" /> : 
-                          <Globe size={24} className="text-primary" />
-                        }
-                        <h3 className="text-3xl font-bold">
-                          {selectedProject.title}
-                        </h3>
-                      </div>
-                      
-                      <p className="text-muted-foreground leading-relaxed text-lg">
-                        {selectedProject.longDescription}
-                      </p>
-
-                      {/* Technologies Used */}
-                      <div>
-                        <h4 className="font-semibold mb-4 text-lg">
-                          🛠️ Technologies Used
-                        </h4>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                          {selectedProject.technologies.map((tech, index) => {
-                            const techLogo = getTechLogo(tech);
-                            return (
-                              <div
-                                key={index}
-                                className="flex items-center gap-2 p-3 bg-muted rounded-lg border border-border hover:shadow-md transition-all"
-                              >
-                                <span className="text-lg">{techLogo.icon}</span>
-                                <span className="font-medium text-sm">{tech}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-
-                      {/* Action Buttons */}
-                      <div className="flex flex-wrap gap-4 pt-4">
-                        {selectedProject.liveUrl && (
-                          <Button 
-                            onClick={() => window.open(selectedProject.liveUrl, "_blank")}
-                            className="flex items-center gap-2"
-                          >
-                            <ExternalLink size={16} />
-                            Live Demo
-                          </Button>
-                        )}
-                        
-                        {selectedProject.githubUrl && (
-                          <Button 
-                            onClick={() => window.open(selectedProject.githubUrl, "_blank")}
-                            variant="secondary"
-                            className="flex items-center gap-2"
-                          >
-                            <Github size={16} />
-                            View Code
-                          </Button>
-                        )}
-
-                        {selectedProject.appStoreUrl && (
-                          <Button 
-                            onClick={() => window.open(selectedProject.appStoreUrl, "_blank")}
-                            variant="secondary"
-                            className="flex items-center gap-2"
-                          >
-                            <Download size={16} />
-                            App Store
-                          </Button>
-                        )}
-
-                        {selectedProject.playStoreUrl && (
-                          <Button 
-                            onClick={() => window.open(selectedProject.playStoreUrl, "_blank")}
-                            variant="secondary"
-                            className="flex items-center gap-2"
-                          >
-                            <Download size={16} />
-                            Google Play
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </DialogContent>
-            </Dialog>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+                <PortfolioCaroussel projects={filteredProjects}/>
+            </div>
+        </section>
+    );
 };
 
 export default Portfolio;

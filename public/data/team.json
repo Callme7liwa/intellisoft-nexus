@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Seddiki Ayoub",
+    "title": "Software Engineer & Data Scientist",
+    "image": "/profiles/ayoub.jpg",
+    "bio": "Holding a dual degree in software engineering, and data science & IoT from TOP engineering schools.",
+    "linkedin": "https://www.linkedin.com/in/seddiki--ayoub/"
+  },
+  {
+    "name": "Ayoub Amazyan",
+    "title": "Head of AI",
+    "image": "/profiles/ayoub_amz.jpeg",
+    "bio": "Head of AI and hands-on engineer focused on GenAI, AI agents, data pipelines and web scraping. I design and ship practical AI systems that automate real business workflows end-to-end.",
+    "linkedin": "https://www.linkedin.com/in/ayoub-amazyan/"
+  },
+  {
+    "name": "Lakhder Amine",
+    "title": "Software Engineer & Data Scientist",
+    "image": "/profiles/amine.jpg",
+    "bio": "Experienced in building scalable web applications and data-driven solutions. Passionate about leveraging technology to solve real-world problems.",
+    "linkedin": "https://www.linkedin.com/in/amine-lakhder-21a182192/"
+  },
+  {
+    "name": "Abdoul Bagui M.",
+    "title": "Software Engineer",
+    "image": "/profiles/abdoul.jpeg",
+    "bio": "Software Engineer with 3+ years of experience delivering secure, scalable systems across cybersecurity, fintech, and SaaS, recognized Elastic Gold Contributor (2023).",
+    "linkedin": "https://www.linkedin.com/in/abdoulbaguim/"
+  }
+]
